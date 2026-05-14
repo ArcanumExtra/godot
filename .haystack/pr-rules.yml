@@ -1,0 +1,55 @@
+rules:
+  - id: "R1"
+    name: "Keep core layer independent from modules"
+    type: llm
+    severity: warning
+    message: "Code under core/** must not directly depend on module-specific code; use core abstractions/interfaces instead."
+    llm:
+      prompt: "Code under core/** must not directly depend on module-specific code; use core abstractions/interfaces instead."
+  - id: "R2"
+    name: "Guard deprecated API members for both build modes"
+    type: llm
+    severity: warning
+    category: "style"
+    message: "When modifying deprecated extension/class API members, wrap declarations and assignments with appropriate DISABLE_DEPRECATED preprocessor guards so both deprecated-enabled and disabled builds compile."
+    llm:
+      prompt: "When modifying deprecated extension/class API members, wrap declarations and assignments with appropriate DISABLE_DEPRECATED preprocessor guards so both deprecated-enabled and disabled builds compile."
+  - id: "R3"
+    name: "Avoid allocations in hot runtime paths"
+    type: llm
+    severity: warning
+    category: "performance"
+    message: "Do not allocate new objects/arrays/strings in frequently called paths (e.g., per-frame, input handling, profiling, tight loops); reuse buffers/cached values."
+    llm:
+      prompt: "Do not allocate new objects/arrays/strings in frequently called paths (e.g., per-frame, input handling, profiling, tight loops); reuse buffers/cached values."
+  - id: "R4"
+    name: "Update docs for user-visible behavior or API changes"
+    type: llm
+    severity: warning
+    category: "patterns"
+    message: "If a change alters runtime behavior or public API semantics, update corresponding documentation (e.g., doc/classes) in the same PR."
+    llm:
+      prompt: "If a change alters runtime behavior or public API semantics, update corresponding documentation (e.g., doc/classes) in the same PR."
+  - id: "R5"
+    name: "Do not edit generated translation files directly"
+    type: llm
+    severity: warning
+    category: "patterns"
+    message: "Generated translation files (e.g., editor/translations/*.po) must not be manually edited; use the localization generation workflow."
+    llm:
+      prompt: "Generated translation files (e.g., editor/translations/*.po) must not be manually edited; use the localization generation workflow."
+  - id: "R6"
+    name: "Use r_ prefix for output parameters"
+    type: llm
+    severity: warning
+    category: "style"
+    message: "Parameters used as output/return-by-reference values must use the r_ naming prefix."
+    llm:
+      prompt: "Parameters used as output/return-by-reference values must use the r_ naming prefix."
+  - id: "R7"
+    name: "Preserve enum compatibility"
+    type: llm
+    severity: warning
+    message: "Do not renumber or rename established enum values in breaking ways; add new values compatibly and use non-breaking mechanisms for display order/text changes."
+    llm:
+      prompt: "Do not renumber or rename established enum values in breaking ways; add new values compatibly and use non-breaking mechanisms for display order/text changes."
